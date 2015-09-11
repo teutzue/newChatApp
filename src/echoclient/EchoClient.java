@@ -93,9 +93,7 @@ public class EchoClient extends Observable implements Runnable {
             users_.add(user);//ADD USER HERE!
         }
         rx.setCommand(ProtocolStrings.USERLIST);
-        //rx.setOnlineUsers(users);
         rx.setOnlineUsers(users_);
-        
         return rx;
     }
     

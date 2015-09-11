@@ -8,6 +8,8 @@ package echoserver;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -44,7 +46,7 @@ public class ProtocolTranslator {
                 userList(message);
                 break;
             default:
-                System.err.println("Something went wrong in ptrotocol translation");
+                Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Something went wrong in protocol Translator class");
                 break;
 
         } // End of Switch()
@@ -53,22 +55,22 @@ public class ProtocolTranslator {
     private void user(String[] msg) {
         UserName = msg[1];
         ct.addUser(UserName);
-        System.out.println("user: " + UserName);
+        Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "User registered: " + UserName);
     }
 
     private void msg(String[] msg) {
-        String messageRx = ProtocolStrings.MSG+ "#" + UserName + "#";
+        String messageRx = ProtocolStrings.MSG + "#" + UserName + "#";
         List<String> receivers = new ArrayList<>();
-        System.out.println("Username msg method " + UserName);
+        //System.out.println("Username msg method " + UserName);
         if (msg[1].contains(ProtocolStrings.SEPARATOR)) {// if contains a ','
             String[] receivers_ = msg[1].split(ProtocolStrings.SEPARATOR);
             receivers.addAll(Arrays.asList(receivers_));
         } else {
             receivers.add(msg[1]);
-            
+
         }
         messageRx += msg[2];
-        System.out.println("MessageRX: " + messageRx);
+        Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "MessageRx: " + messageRx);
         server.messageToClients(messageRx, receivers);
     } // End of msg
 
@@ -83,5 +85,5 @@ public class ProtocolTranslator {
         System.out.println("userlist");
         System.out.println(userList.toString());
     }
-    
+
 } // End of class
