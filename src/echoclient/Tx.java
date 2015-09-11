@@ -14,12 +14,12 @@ public class Tx {
     String command;
     String Name;
     String message;
+//    String star;
     List<String> receivers = new ArrayList<>();
 
     public Tx(String command, String name) {//constructor only for testing purposes with the test class
         this.command = command;
         this.Name = name;
-        //this.receivers = receivers;
     }
     
     public Tx(String command, List<String>receivers,String message){
@@ -28,10 +28,24 @@ public class Tx {
         this.receivers = receivers;
     }
     
+//    public Tx(String command, String star,String message){
+//        this.command = command;
+//        this.message = message;
+//        this.star = star;
+//    }
+    
     public Tx(String command){
         this.command = command;
     }
-
+//
+//    public String getStar() {
+//        return star;
+//    }
+//
+//    public void setStar(String star) {
+//        this.star = star;
+//    }
+    
     public String getCommand() {
         return command;
     }
