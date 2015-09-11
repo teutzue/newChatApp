@@ -122,14 +122,14 @@ public class EchoClient extends Observable implements Runnable {
         send(message);
     }
 
+//    private void msgAll(Tx t){
+//         send(ProtocolStrings.MSG + "*" + t.getMessage());
+//    }
+//    
     private void stop(Tx t) {
         send(ProtocolStrings.STOP);
     }
 
-//    public List<String> getUsersList() {
-//        return users;
-//    }
-    
     public void stop() throws IOException {
         output.println(ProtocolStrings.STOP);
     }

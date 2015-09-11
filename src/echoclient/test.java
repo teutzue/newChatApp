@@ -21,7 +21,7 @@ public class test implements Observer {
     EchoClient client1;
     Tx transportUser1 = new Tx(ProtocolStrings.USER, "Teo");
     Tx transportUser2 = new Tx(ProtocolStrings.USER, "Bo");
-    
+    Tx transportStar = new Tx(ProtocolStrings.MSG, null,  "Sent to all");
     Tx transportStop = new Tx(ProtocolStrings.STOP);
     List<String>map = new ArrayList<>();
 
@@ -45,10 +45,15 @@ public class test implements Observer {
         Thread.sleep(2000);
         client1.createMessageString(transportUser2);
         Thread.sleep(2000);
-        Tx transportMsg = new Tx(ProtocolStrings.MSG, map, "Hello Bo&Teo");
+        Tx transportMsg = new Tx(ProtocolStrings.MSG, map, "Hello Bo & Teo");
         client.createMessageString(transportMsg);
         Thread.sleep(2000);
-        //client.createMessageString(transportStop);
+        ArrayList<String> arr = new ArrayList<>();
+        arr.add("*");
+        transportStar = new Tx(ProtocolStrings.MSG, arr, "Sent to all");
+        client1.createMessageString(transportStar);
+        Thread.sleep(2000);
+        client.createMessageString(transportStop);
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -59,13 +64,12 @@ public class test implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         map.clear();
+        //transportStar.getReceivers();
         Rx rx = new Rx((Rx) arg);
         for (String map1 : rx.getOnlineUsers()) {
             map.add(map1);
         }
-        
         //System.out.println("Updated: " + arg.toString());
-        
         System.out.println(rx.getSender());
         System.out.println(rx.getMessage());
         System.out.println(rx.getOnlineUsers().toString());
