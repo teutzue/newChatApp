@@ -88,6 +88,7 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
         
         
         eClient.connect(properties.getProperty("serverIp"), Integer.parseInt( properties.getProperty("port")) );
+        // eClient.connect("athinodoros.cloudapp.net", 9090);
         new Thread(eClient).start();
         
         
@@ -146,15 +147,21 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
             
             echoclient.Tx tx = new echoclient.Tx(ProtocolStrings.MSG);
 
-            
-
             ArrayList<String> reseivers = new ArrayList<>();
-            for (int i = 0; i < listModelReceivers.getSize(); i++) {
-                reseivers.add(listModelReceivers.get(i));
-                System.out.println(reseivers.toString());
+            
+            if( (listModelOnlineUsers.size() == listModelReceivers.size()) ) {
+                
+                reseivers.add(ProtocolStrings.STAR);
+            
+            } else {
+            
+                for (int i = 0; i < listModelReceivers.getSize(); i++) {
+                    reseivers.add(listModelReceivers.get(i));
+                    System.out.println(reseivers.toString());
+                }
             }
             tx.setReceivers(reseivers);
-            //tx.setName(userName);
+           
             tx.setMessage(msg);
 
             eClient.createMessageString(tx);
@@ -571,8 +578,11 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
         
         // SelectAll (onlineUsers) :: remove a All OnlineUsers and put the OnlineUsers in Receicers
         
-        // TODO :: do something
-        
+        listModelReceivers.clear();
+        for (int i = 0; i < listModelOnlineUsers.getSize(); i++) {
+            
+            listModelReceivers.addElement(listModelOnlineUsers.getElementAt(i));
+        }
         
         
         
@@ -582,8 +592,7 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
         
         // SelectAll (receivers) :: remove a All OnlineUsers and put the OnlineUsers in Receicers
         
-         // TODO :: do something
-        
+        listModelReceivers.clear();
         
     }//GEN-LAST:event_jButtonDeselectAllMousePressed
 
