@@ -1,26 +1,110 @@
-Sep 11, 2015 1:39:12 PM echoserver.EchoServer runServer
+Sep 11, 2015 2:43:52 PM echoserver.EchoServer runServer
 INFO: Sever started. Listening on: 9090, bound to: localhost
-Sep 11, 2015 1:39:17 PM echoserver.EchoServer runServer
+Sep 11, 2015 2:43:57 PM echoserver.EchoServer runServer
 INFO: Connected to a client
-Sep 11, 2015 1:39:20 PM echoserver.ClientHandler run
+Sep 11, 2015 2:44:00 PM echoserver.ClientHandler run
 INFO: Received the message: USER#BO 
-Sep 11, 2015 1:39:20 PM echoserver.ClientHandler run
+Sep 11, 2015 2:44:00 PM echoserver.EchoServer addClient
+INFO: Client added to list: Bo
+Sep 11, 2015 2:44:00 PM echoserver.EchoServer addClient
+INFO:  list size: 1
+Sep 11, 2015 2:44:00 PM echoserver.ClientHandler addUser
+INFO: Client name: Bo
+Sep 11, 2015 2:44:00 PM echoserver.ProtocolTranslator user
+INFO: User registered: Bo
+Sep 11, 2015 2:44:00 PM echoserver.ClientHandler run
 INFO: Received the message: USER#BO 
-Sep 11, 2015 1:40:02 PM echoserver.EchoServer runServer
+Sep 11, 2015 2:44:08 PM echoserver.EchoServer runServer
 INFO: Connected to a client
-Sep 11, 2015 1:40:13 PM echoserver.ClientHandler run
+Sep 11, 2015 2:44:17 PM echoserver.ClientHandler run
 INFO: Received the message: USER#JON 
-Sep 11, 2015 1:40:13 PM echoserver.ClientHandler run
+Sep 11, 2015 2:44:17 PM echoserver.EchoServer addClient
+INFO: Client added to list: jon
+Sep 11, 2015 2:44:17 PM echoserver.EchoServer addClient
+INFO:  list size: 2
+Sep 11, 2015 2:44:17 PM echoserver.ClientHandler addUser
+INFO: Client name: jon
+Sep 11, 2015 2:44:17 PM echoserver.ProtocolTranslator user
+INFO: User registered: jon
+Sep 11, 2015 2:44:17 PM echoserver.ClientHandler run
 INFO: Received the message: USER#JON 
-Sep 11, 2015 1:40:19 PM echoserver.EchoServer runServer
+Sep 11, 2015 2:44:21 PM echoserver.EchoServer runServer
 INFO: Connected to a client
-Sep 11, 2015 1:40:25 PM echoserver.ClientHandler run
+Sep 11, 2015 2:44:28 PM echoserver.ClientHandler run
 INFO: Received the message: USER#HANS 
-Sep 11, 2015 1:40:25 PM echoserver.ClientHandler run
+Sep 11, 2015 2:44:28 PM echoserver.EchoServer addClient
+INFO: Client added to list: hans
+Sep 11, 2015 2:44:28 PM echoserver.EchoServer addClient
+INFO:  list size: 3
+Sep 11, 2015 2:44:28 PM echoserver.ClientHandler addUser
+INFO: Client name: hans
+Sep 11, 2015 2:44:28 PM echoserver.ProtocolTranslator user
+INFO: User registered: hans
+Sep 11, 2015 2:44:28 PM echoserver.ClientHandler run
 INFO: Received the message: USER#HANS 
-Sep 11, 2015 1:41:33 PM echoserver.ClientHandler run
+Sep 11, 2015 2:45:04 PM echoserver.EchoServer removeClient
+INFO: Client removed, list size is now: 2
+Sep 11, 2015 2:45:04 PM echoserver.ClientHandler run
 INFO: Closed a Connection
-Sep 11, 2015 1:41:50 PM echoserver.ClientHandler run
+Sep 11, 2015 2:45:20 PM echoserver.EchoServer removeClient
+INFO: Client removed, list size is now: 1
+Sep 11, 2015 2:45:20 PM echoserver.ClientHandler run
 INFO: Closed a Connection
-Sep 11, 2015 1:42:01 PM echoserver.ClientHandler run
+Sep 11, 2015 2:45:33 PM echoserver.EchoServer removeClient
+INFO: Client removed, list size is now: 0
+Sep 11, 2015 2:45:33 PM echoserver.ClientHandler run
+INFO: Closed a Connection
+Sep 11, 2015 2:49:11 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+Sep 11, 2015 2:49:13 PM echoserver.ClientHandler run
+INFO: Received the message: USER#DSF 
+Sep 11, 2015 2:49:13 PM echoserver.EchoServer addClient
+INFO: Client added to list: dsf
+Sep 11, 2015 2:49:13 PM echoserver.EchoServer addClient
+INFO:  list size: 1
+Sep 11, 2015 2:49:13 PM echoserver.ClientHandler addUser
+INFO: Client name: dsf
+Sep 11, 2015 2:49:13 PM echoserver.ProtocolTranslator user
+INFO: User registered: dsf
+Sep 11, 2015 2:49:13 PM echoserver.ClientHandler run
+INFO: Received the message: USER#DSF 
+Sep 11, 2015 2:49:18 PM echoserver.EchoServer removeClient
+INFO: Client removed, list size is now: 0
+Sep 11, 2015 2:49:18 PM echoserver.ClientHandler run
+INFO: Closed a Connection
+Sep 11, 2015 3:02:06 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+Sep 11, 2015 3:02:12 PM echoserver.ClientHandler run
+INFO: Received the message: USER#BO 
+Sep 11, 2015 3:02:12 PM echoserver.EchoServer addClient
+INFO: Client added to list: bo
+Sep 11, 2015 3:02:12 PM echoserver.EchoServer addClient
+INFO:  list size: 1
+Sep 11, 2015 3:02:12 PM echoserver.ClientHandler addUser
+INFO: Client name: bo
+Sep 11, 2015 3:02:12 PM echoserver.ProtocolTranslator user
+INFO: User registered: bo
+Sep 11, 2015 3:02:12 PM echoserver.ClientHandler run
+INFO: Received the message: USER#BO 
+Sep 11, 2015 3:02:21 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+Sep 11, 2015 3:02:28 PM echoserver.ClientHandler run
+INFO: Received the message: USER#JON 
+Sep 11, 2015 3:02:28 PM echoserver.EchoServer addClient
+INFO: Client added to list: jon
+Sep 11, 2015 3:02:28 PM echoserver.EchoServer addClient
+INFO:  list size: 2
+Sep 11, 2015 3:02:28 PM echoserver.ClientHandler addUser
+INFO: Client name: jon
+Sep 11, 2015 3:02:28 PM echoserver.ProtocolTranslator user
+INFO: User registered: jon
+Sep 11, 2015 3:02:28 PM echoserver.ClientHandler run
+INFO: Received the message: USER#JON 
+Sep 11, 2015 3:02:32 PM echoserver.EchoServer removeClient
+INFO: Client removed, list size is now: 1
+Sep 11, 2015 3:02:32 PM echoserver.ClientHandler run
+INFO: Closed a Connection
+Sep 11, 2015 3:02:47 PM echoserver.EchoServer removeClient
+INFO: Client removed, list size is now: 0
+Sep 11, 2015 3:02:47 PM echoserver.ClientHandler run
 INFO: Closed a Connection

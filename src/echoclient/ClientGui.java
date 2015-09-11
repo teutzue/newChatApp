@@ -15,9 +15,11 @@ import java.util.Observable;
 import javax.swing.DefaultListModel;
 import javax.swing.text.AttributeSet;
 import java.util.Observer;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.event.ListSelectionListener;
+import utils.Utils;
 
 
 
@@ -68,7 +70,8 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
     DefaultListModel<String> listModelOnlineUsers = new DefaultListModel<>();
 
     private final EchoClient eClient = new EchoClient(this);
-            
+    
+    private static final Properties properties = Utils.initProperties("server.properties");
     /**
      * Creates new form NewJFrame
      */
@@ -84,7 +87,7 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
 
         
         
-        eClient.connect("localhost", 9090);
+        eClient.connect(properties.getProperty("serverIp"), Integer.parseInt( properties.getProperty("port")) );
         new Thread(eClient).start();
         
         
@@ -93,7 +96,7 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
 
     private void selectWindow(Window window) {
 
-        // Tab1 :: panel visibility
+        // Tab1 :: panel visibilit
         jPanel1_Login.setVisible(false);
         jPanel2_Chat.setVisible(false);
         
@@ -183,22 +186,31 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
     
     private void updateOnlineUserList(List<String> users) {
 
-        // delete any content form lists
+        DefaultListModel<String> temp = new DefaultListModel();
+        temp = listModelReceivers;
+        
+          // delete any content form lists
         listModelOnlineUsers.clear();
-
+        listModelReceivers.clear();
+        
         for (String user : users) {
 
             listModelOnlineUsers.addElement(user);
             
-            
-            
-//            if( ! (listModelReceivers.contains(user) & listModelOnlineUsers.contains(user))  ) {
-//                listModelReceivers.removeElement(user);
-//            }
         }
         
+        for (int i = 0; i < temp.getSize(); i++) {
+            
+            if( ! listModelOnlineUsers.contains(temp.elementAt(i))) {
+                
+                temp.removeElementAt(i);
+            }
+        }
+       
+        listModelReceivers = temp;
     }
 
+    
     private /* synchronized */ void updateTextArea(String msg, String uName) {
 
         final String UNAME = "[" + uName + " says:]";
@@ -560,6 +572,7 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
         // SelectAll (onlineUsers) :: remove a All OnlineUsers and put the OnlineUsers in Receicers
         
         // TODO :: do something
+        
         
         
         
