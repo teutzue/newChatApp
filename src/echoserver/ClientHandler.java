@@ -25,7 +25,7 @@ public class ClientHandler implements Runnable {
     private String name;
     private final Socket socket;
     private Observer o;
-    public  ProtocolTranslator translator = new ProtocolTranslator(this);
+    public ProtocolTranslator translator = new ProtocolTranslator(this);
     public EchoServer echo = new EchoServer();
 
     public ClientHandler(Socket s) throws IOException {
@@ -58,24 +58,20 @@ public class ClientHandler implements Runnable {
         echo.removeClient(name);
     }
 
-    public void send(String msg) 
-    {
+    public void send(String msg) {
         writer.println(msg);
-        System.out.println("The send method from the hasmap writes ");
     }
-    
-    private void translate(String msg){
+
+    private void translate(String msg) {
         translator.Translate(msg);
     }
-    
-    public void addUser(String name){
+
+    public void addUser(String name) {
         echo.addClient(this, name);
-        System.out.println("Client name: " + name);
+        Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Client name: " + name);
     }
 
     public void setName(String name) {
         this.name = name;
     }
-    
-  
 }

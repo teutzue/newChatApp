@@ -32,7 +32,7 @@ public class EchoServer {
     public void removeClient(String name) {
         clientList.remove(name);
         sendUsers(buildUserList());
-        System.out.println(clientList.size());
+        Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Client removed, list size is now: " + clientList.size());
     }
 
     private void runServer() {
@@ -76,7 +76,7 @@ public class EchoServer {
             value.send(msg);
         }
     }
-    
+
     public String buildUserList() {
         String result = "USERLIST#";
         for (Map.Entry<String, ClientHandler> entrySet : clientList.entrySet()) {
@@ -90,8 +90,8 @@ public class EchoServer {
     public void addClient(ClientHandler ct, String name) {
         clientList.put(name, ct);
         ct.setName(name);
-        System.out.println(name);
-        System.out.println(clientList.size());
+        Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Client added to list: " + name);
+        Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, " list size: " + clientList.size());
         sendUsers(buildUserList());
     }
 
