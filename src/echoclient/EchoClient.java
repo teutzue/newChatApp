@@ -142,7 +142,7 @@ public class EchoClient extends Observable implements Runnable {
             public void run() {
                 while (flag) {
                     msg = input.nextLine();
-
+                    System.out.println("Received msg from server :" + msg);
                     if (msg.equals(ProtocolStrings.STOP)) {
                         flag = false;
                         try {

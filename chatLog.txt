@@ -1,0 +1,26 @@
+Sep 11, 2015 1:39:12 PM echoserver.EchoServer runServer
+INFO: Sever started. Listening on: 9090, bound to: localhost
+Sep 11, 2015 1:39:17 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+Sep 11, 2015 1:39:20 PM echoserver.ClientHandler run
+INFO: Received the message: USER#BO 
+Sep 11, 2015 1:39:20 PM echoserver.ClientHandler run
+INFO: Received the message: USER#BO 
+Sep 11, 2015 1:40:02 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+Sep 11, 2015 1:40:13 PM echoserver.ClientHandler run
+INFO: Received the message: USER#JON 
+Sep 11, 2015 1:40:13 PM echoserver.ClientHandler run
+INFO: Received the message: USER#JON 
+Sep 11, 2015 1:40:19 PM echoserver.EchoServer runServer
+INFO: Connected to a client
+Sep 11, 2015 1:40:25 PM echoserver.ClientHandler run
+INFO: Received the message: USER#HANS 
+Sep 11, 2015 1:40:25 PM echoserver.ClientHandler run
+INFO: Received the message: USER#HANS 
+Sep 11, 2015 1:41:33 PM echoserver.ClientHandler run
+INFO: Closed a Connection
+Sep 11, 2015 1:41:50 PM echoserver.ClientHandler run
+INFO: Closed a Connection
+Sep 11, 2015 1:42:01 PM echoserver.ClientHandler run
+INFO: Closed a Connection
