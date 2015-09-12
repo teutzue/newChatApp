@@ -1,42 +1,24 @@
-Sep 11, 2015 4:03:20 PM echoserver.EchoServer runServer
+Sep 12, 2015 9:37:23 PM echoserver.EchoServer runServer
 INFO: Sever started. Listening on: 9090, bound to: localhost
-Sep 11, 2015 4:03:27 PM echoserver.EchoServer runServer
+Sep 12, 2015 9:37:34 PM echoserver.EchoServer runServer
 INFO: Connected to a client
-Sep 11, 2015 4:03:31 PM echoserver.ClientHandler run
-INFO: Received the message: USER#BO 
-Sep 11, 2015 4:03:31 PM echoserver.EchoServer addClient
-INFO: Client added to list: Bo
-Sep 11, 2015 4:03:31 PM echoserver.EchoServer addClient
+Sep 12, 2015 9:37:34 PM echoserver.ClientHandler run
+INFO: Received the message: USER#OLE 
+Sep 12, 2015 9:37:34 PM echoserver.EchoServer addClient
+INFO: Client added to list: ole
+Sep 12, 2015 9:37:34 PM echoserver.EchoServer addClient
 INFO:  list size: 1
-Sep 11, 2015 4:03:31 PM echoserver.ClientHandler addUser
-INFO: Client name: Bo
-Sep 11, 2015 4:03:31 PM echoserver.ProtocolTranslator user
-INFO: User registered: Bo
-Sep 11, 2015 4:03:31 PM echoserver.ClientHandler run
-INFO: Received the message: USER#BO 
-Sep 11, 2015 4:03:44 PM echoserver.EchoServer runServer
-INFO: Connected to a client
-Sep 11, 2015 4:03:53 PM echoserver.ClientHandler run
-INFO: Received the message: USER#JON 
-Sep 11, 2015 4:03:53 PM echoserver.EchoServer addClient
-INFO: Client added to list: jon
-Sep 11, 2015 4:03:53 PM echoserver.EchoServer addClient
-INFO:  list size: 2
-Sep 11, 2015 4:03:53 PM echoserver.ClientHandler addUser
-INFO: Client name: jon
-Sep 11, 2015 4:03:53 PM echoserver.ProtocolTranslator user
-INFO: User registered: jon
-Sep 11, 2015 4:03:53 PM echoserver.ClientHandler run
-INFO: Received the message: USER#JON 
-Sep 11, 2015 4:04:16 PM echoserver.ProtocolTranslator msg
-INFO: MessageRx: MSG#Bo#Hi everybody
-Sep 11, 2015 4:04:16 PM echoserver.ClientHandler run
-INFO: Received the message: MSG#*#HI EVERYBODY 
-Sep 11, 2015 4:05:00 PM echoserver.ProtocolTranslator msg
-INFO: MessageRx: MSG#Bo#sdfdsfdsf
-Sep 11, 2015 4:05:00 PM echoserver.ClientHandler run
-INFO: Received the message: MSG#BO#SDFDSFDSF 
-Sep 11, 2015 4:05:20 PM echoserver.EchoServer removeClient
-INFO: Client removed, list size is now: 1
-Sep 11, 2015 4:05:20 PM echoserver.ClientHandler run
-INFO: Closed a Connection
+Sep 12, 2015 9:37:34 PM echoserver.ClientHandler addUser
+INFO: Client name: ole
+Sep 12, 2015 9:37:34 PM echoserver.ProtocolTranslator user
+INFO: User registered: ole
+Sep 12, 2015 9:37:34 PM echoserver.ClientHandler run
+INFO: Received the message: USER#OLE 
+Sep 12, 2015 9:37:39 PM echoserver.ProtocolTranslator msg
+INFO: MessageRx: MSG#ole#sdfdsfdsf
+Sep 12, 2015 9:37:39 PM echoserver.ClientHandler run
+INFO: Received the message: MSG#*#SDFDSFDSF 
+Sep 12, 2015 9:37:41 PM echoserver.ProtocolTranslator msg
+INFO: MessageRx: MSG#ole#sdfdsfdsf
+Sep 12, 2015 9:37:41 PM echoserver.ClientHandler run
+INFO: Received the message: MSG#*#SDFDSFDSF 

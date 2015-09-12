@@ -69,9 +69,15 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
     DefaultListModel<String> listModelReceivers = new DefaultListModel<>();
     DefaultListModel<String> listModelOnlineUsers = new DefaultListModel<>();
 
-    private final EchoClient eClient = new EchoClient(this);
+    private EchoClient eClient = new EchoClient(this);
     
     private static final Properties properties = Utils.initProperties("server.properties");
+    
+     String portNumber; // = properties.getProperty("port");
+     String serverIp; // = properties.getProperty("serverIp");
+    
+     Thread thread;
+     
     /**
      * Creates new form NewJFrame
      */
@@ -85,12 +91,19 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
         jListOnlineUseres.setModel(listModelOnlineUsers);
         jListRecivers.setModel(listModelReceivers);
 
+        portNumber = properties.getProperty("port");
+        serverIp = properties.getProperty("serverIp");
         
+        jTextField_PortNumber.setText(portNumber);
+        jTextField_Address.setText(serverIp);
         
-        eClient.connect(properties.getProperty("serverIp"), Integer.parseInt( properties.getProperty("port")) );
-        // eClient.connect("athinodoros.cloudapp.net", 9090);
-        new Thread(eClient).start();
-        
+        // ---------------------------
+//        eClient.connect(serverIp, Integer.parseInt(portNumber));
+//        // eClient.connect("athinodoros.cloudapp.net", 9090);
+//        new Thread(eClient).start();
+        //-----------------------------------------
+        jLabel_PortNumber.setText(portNumber);
+        jLabel_Address.setText(serverIp);
         
         selectWindow(window.LOGIN);
     }
@@ -246,6 +259,16 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
         jButton1_Login = new javax.swing.JButton();
         jTextField1_UserName = new javax.swing.JTextField();
         jLabel1_UserName = new javax.swing.JLabel();
+        jPanel1_portAndAdress = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField_PortNumber = new javax.swing.JTextField();
+        jTextField_Address = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel_PortNumber = new javax.swing.JLabel();
+        jLabel_Address = new javax.swing.JLabel();
+        jButton_SetPortAndAddress = new javax.swing.JButton();
         jPanel2_Chat = new javax.swing.JPanel();
         jButton2_LogOut = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -281,6 +304,86 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
 
         jLabel1_UserName.setText("Enter your user name here:");
 
+        jPanel1_portAndAdress.setBorder(javax.swing.BorderFactory.createTitledBorder("Enter port and addess"));
+        jPanel1_portAndAdress.setToolTipText("Enter port and adress");
+
+        jLabel4.setText("Enter a new port number");
+
+        jLabel5.setText("Enter a new address");
+
+        jTextField_PortNumber.setText("jTextField1");
+
+        jTextField_Address.setText("jTextField2");
+
+        jLabel6.setText("Port: ");
+
+        jLabel7.setText("Address: ");
+
+        jLabel_PortNumber.setText("jLabel8");
+
+        jLabel_Address.setText("jLabel9");
+
+        jButton_SetPortAndAddress.setText("Set");
+        jButton_SetPortAndAddress.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jButton_SetPortAndAddressMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1_portAndAdressLayout = new javax.swing.GroupLayout(jPanel1_portAndAdress);
+        jPanel1_portAndAdress.setLayout(jPanel1_portAndAdressLayout);
+        jPanel1_portAndAdressLayout.setHorizontalGroup(
+            jPanel1_portAndAdressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1_portAndAdressLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1_portAndAdressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1_portAndAdressLayout.createSequentialGroup()
+                        .addGroup(jPanel1_portAndAdressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_PortNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField_Address, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1_portAndAdressLayout.createSequentialGroup()
+                                .addGroup(jPanel1_portAndAdressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1_portAndAdressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_PortNumber)
+                                    .addComponent(jLabel_Address))))
+                        .addGap(29, 76, Short.MAX_VALUE))
+                    .addGroup(jPanel1_portAndAdressLayout.createSequentialGroup()
+                        .addGroup(jPanel1_portAndAdressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_SetPortAndAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel1_portAndAdressLayout.setVerticalGroup(
+            jPanel1_portAndAdressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1_portAndAdressLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1_portAndAdressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel_PortNumber))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1_portAndAdressLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel_Address))
+                .addGap(76, 76, 76)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField_PortNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField_Address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jButton_SetPortAndAddress)
+                .addGap(30, 30, 30))
+        );
+
+        jLabel_PortNumber.getAccessibleContext().setAccessibleName("jLabel_PortNumber");
+        jLabel_Address.getAccessibleContext().setAccessibleName("jLabel_Address");
+
         javax.swing.GroupLayout jPanel1_LoginLayout = new javax.swing.GroupLayout(jPanel1_Login);
         jPanel1_Login.setLayout(jPanel1_LoginLayout);
         jPanel1_LoginLayout.setHorizontalGroup(
@@ -290,20 +393,29 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
                 .addGroup(jPanel1_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1_UserName)
                     .addComponent(jButton1_Login, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(468, Short.MAX_VALUE))
+                    .addComponent(jTextField1_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                .addComponent(jPanel1_portAndAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         jPanel1_LoginLayout.setVerticalGroup(
             jPanel1_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1_LoginLayout.createSequentialGroup()
-                .addContainerGap(306, Short.MAX_VALUE)
-                .addComponent(jLabel1_UserName)
-                .addGap(38, 38, 38)
-                .addComponent(jTextField1_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(jButton1_Login)
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(jPanel1_LoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1_portAndAdress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1_LoginLayout.createSequentialGroup()
+                        .addComponent(jLabel1_UserName)
+                        .addGap(38, 38, 38)
+                        .addComponent(jTextField1_UserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton1_Login)
+                        .addGap(12, 12, 12)))
                 .addGap(38, 38, 38))
         );
+
+        jPanel1_portAndAdress.getAccessibleContext().setAccessibleName("Enter port and adress");
+        jPanel1_portAndAdress.getAccessibleContext().setAccessibleDescription("");
 
         jButton2_LogOut.setText("Log out");
         jButton2_LogOut.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -319,6 +431,7 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
 
         jTextAreaChatLog.setColumns(20);
         jTextAreaChatLog.setRows(5);
+        jTextAreaChatLog.setFocusable(false);
         jScrollPane1.setViewportView(jTextAreaChatLog);
 
         jTextFieldMessage.setText("jTextField1");
@@ -488,16 +601,30 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
 
     private void jButton1_LoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1_LoginMousePressed
 
-        // Login :: After this putton is pressed go to CHAT panel
-        userName = jTextField1_UserName.getText();
-        jLabel4_Login_as.setText("You are logged in as " + userName);
-
-        
-        // send userName to Client
-        sendUserName();
-        
-        jTextFieldMessage.setText("");
-        selectWindow(window.CHAT);
+        try {
+            // Login :: After this putton is pressed go to CHAT panel
+            userName = jTextField1_UserName.getText();
+            jLabel4_Login_as.setText("You are logged in as " + userName);
+            
+            
+            
+            EchoClient newClient = new EchoClient(this);
+            eClient = newClient;
+            
+            newClient.connect(serverIp, Integer.parseInt(portNumber));
+            
+            thread = new Thread(newClient);
+            thread.start();
+            
+            
+            // send userName to Client
+            sendUserName(); // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+            
+            jTextFieldMessage.setText("");
+            selectWindow(window.CHAT);
+        } catch (IOException ex) {
+            Logger.getLogger(ClientGui.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jButton1_LoginMousePressed
 
@@ -596,6 +723,31 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
         
     }//GEN-LAST:event_jButtonDeselectAllMousePressed
 
+    private void jButton_SetPortAndAddressMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_SetPortAndAddressMousePressed
+        
+//        try {
+            // Set port Number and Address
+            
+            portNumber  = jTextField_PortNumber.getText();
+            jLabel_PortNumber.setText(portNumber);
+            
+            serverIp = jTextField_Address.getText();
+            jLabel_Address.setText(serverIp);
+            
+//            EchoClient newClient = new EchoClient(this);
+//            eClient = newClient;
+//            newClient.connect(serverIp, Integer.parseInt(portNumber));
+//        
+//            new Thread(newClient).start();
+           
+        
+//        } catch (IOException ex) {
+//            Logger.getLogger(ClientGui.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+         
+        
+    }//GEN-LAST:event_jButton_SetPortAndAddressMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -646,15 +798,23 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
     private javax.swing.JButton jButtonSelect;
     private javax.swing.JButton jButtonSelectAll;
     private javax.swing.JButton jButtonSend;
+    private javax.swing.JButton jButton_SetPortAndAddress;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1_UserName;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel4_Login_as;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel_Address;
+    private javax.swing.JLabel jLabel_PortNumber;
     private javax.swing.JLayeredPane jLayeredPane;
     private javax.swing.JList jListOnlineUseres;
     private javax.swing.JList jListRecivers;
     private javax.swing.JPanel jPanel1_Login;
+    private javax.swing.JPanel jPanel1_portAndAdress;
     private javax.swing.JPanel jPanel2_Chat;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -662,5 +822,7 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
     private javax.swing.JTextArea jTextAreaChatLog;
     private javax.swing.JTextField jTextField1_UserName;
     private javax.swing.JTextField jTextFieldMessage;
+    private javax.swing.JTextField jTextField_Address;
+    private javax.swing.JTextField jTextField_PortNumber;
     // End of variables declaration//GEN-END:variables
 }
