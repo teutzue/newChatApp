@@ -16,7 +16,7 @@ public class EchoServer {
 
     private static boolean keepRunning = true;
     private static ServerSocket serverSocket;
-    private static final Properties properties = Utils.initProperties("server.properties");
+    //private static final Properties properties = Utils.initProperties("server.properties");
     private static Map<String, ClientHandler> clientList = new ConcurrentHashMap();
 
     public static void stopServer() {
@@ -36,13 +36,13 @@ public class EchoServer {
     }
 
     private void runServer() {
-        int port = Integer.parseInt(properties.getProperty("port"));
-        String ip = properties.getProperty("serverIp");
+        int port = 9090;
+        String ip = "localhost";
 
         Logger.getLogger(EchoServer.class.getName()).log(Level.INFO, "Sever started. Listening on: " + port + ", bound to: " + ip);
         try {
             serverSocket = new ServerSocket();
-            serverSocket.bind(new InetSocketAddress(ip, port));
+            serverSocket.bind(new InetSocketAddress(ip,port));
             do {
                 Socket socket = serverSocket.accept(); //Important Blocking call
 
@@ -58,7 +58,7 @@ public class EchoServer {
     }
 
     public static void main(String[] args) {
-        String logFile = properties.getProperty("logFile");
+        String logFile = "ChatLog.txt";
         Utils.setLogFile(logFile, EchoServer.class.getName());
 
         new EchoServer().runServer();

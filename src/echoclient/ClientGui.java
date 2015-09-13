@@ -71,7 +71,7 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
 
     private EchoClient eClient = new EchoClient(this);
     
-    private static final Properties properties = Utils.initProperties("server.properties");
+    //private static final Properties properties = Utils.initProperties("server.properties");
     
      String portNumber; // = properties.getProperty("port");
      String serverIp; // = properties.getProperty("serverIp");
@@ -91,8 +91,8 @@ public class ClientGui extends javax.swing.JFrame implements Observer {
         jListOnlineUseres.setModel(listModelOnlineUsers);
         jListRecivers.setModel(listModelReceivers);
 
-        portNumber = properties.getProperty("port");
-        serverIp = properties.getProperty("serverIp");
+        portNumber = jTextField_PortNumber.getText();
+        serverIp = jTextField_Address.getText();
         
         jTextField_PortNumber.setText(portNumber);
         jTextField_Address.setText(serverIp);
